@@ -14,25 +14,23 @@ const TodoList: React.FC<TodoListProps> = ({
 }) => {
   return (
     <ul>
-      {todos.map((todo) => (
-        <li key={todo.id}>
+      {todos.map((t) => (
+        <li key={t.id}>
           <input
             type="checkbox"
-            checked={todo.isDone}
+            checked={t.isDone}
             onChange={() =>
               updateTodo({
-                id: todo.id,
-                description: todo.description,
-                isDone: !todo.isDone,
+                id: t.id,
+                description: t.description,
+                isDone: !t.isDone,
               })
             }
           />
-          <span
-            style={{ textDecoration: todo.isDone ? 'line-through' : 'none' }}
-          >
-            {todo.description}
+          <span style={{ textDecoration: t.isDone ? 'line-through' : 'none' }}>
+            {t.description}
           </span>
-          <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+          <button onClick={() => deleteTodo(t.id)}>Delete</button>
         </li>
       ))}
     </ul>
